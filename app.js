@@ -24,6 +24,9 @@ sql.connect(config).then(pool => {
 });
 
 const productRoutes = require('./api/routes/products');
+const supplierRoutes = require('./api/routes/suppliers');
+const locationRoutes = require('./api/routes/locations');
+const brandRoutes = require('./api/routes/brands');
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
@@ -41,6 +44,9 @@ app.use((req, res, next) => {
 
 //Rutas
 app.use('/products', productRoutes);
+app.use('/suppliers', supplierRoutes);
+app.use('/locations', locationRoutes);
+app.use('/brands', brandRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Not found');
